@@ -73,7 +73,7 @@ export default function AdminPage() {
           <form onSubmit={handleLogin} className="space-y-3">
             <input
               type="password"
-              placeholder="Secret (default: admin123)"
+              placeholder="Enter Admin Secret"
               value={secret}
               onChange={(e) => setSecret(e.target.value)}
               className="w-full px-3 py-2 bg-zinc-900 border border-zinc-800 rounded text-xs text-white placeholder-zinc-600 focus:outline-none focus:border-zinc-500 font-mono"

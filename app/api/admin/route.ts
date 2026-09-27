@@ -11,9 +11,9 @@ export async function GET(request: Request) {
     const authHeader = request.headers.get('authorization');
     const token = authHeader?.replace('Bearer ', '') || searchParams.get('token');
 
-    const expectedSecret = process.env.ADMIN_SECRET || 'admin123';
+    const expectedSecret = process.env.ADMIN_SECRET;
 
-    if (!token || token !== expectedSecret) {
+    if (!expectedSecret || !token || token !== expectedSecret) {
       return NextResponse.json(
         { error: 'Unauthorized: Invalid admin secret key' },
         { status: 401 }

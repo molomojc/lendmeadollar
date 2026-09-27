@@ -13,7 +13,7 @@ export function getPayPalBaseUrl(): string {
 }
 
 export function isPayPalConfigured(): boolean {
-  const clientId = process.env.PAYPAL_CLIENT_ID;
+  const clientId = process.env.PAYPAL_CLIENT_ID || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
   const secret = process.env.PAYPAL_CLIENT_SECRET;
   return Boolean(
     clientId &&
@@ -32,7 +32,7 @@ export async function getPayPalAccessToken(): Promise<string> {
     return tokenCache.token;
   }
 
-  const clientId = process.env.PAYPAL_CLIENT_ID;
+  const clientId = process.env.PAYPAL_CLIENT_ID || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
   const secret = process.env.PAYPAL_CLIENT_SECRET;
 
   if (!clientId || !secret) {

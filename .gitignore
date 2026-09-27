@@ -37,8 +37,9 @@ yarn-error.log*
 data/*.json
 data/
 
-# vercel
+# vercel & netlify
 .vercel
+.netlify
 
 # typescript
 *.tsbuildinfo
