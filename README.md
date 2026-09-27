@@ -43,7 +43,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000):
 * Click **GIVE $1** to test payment capture, supporter increment, and victory screen.
-* Access the private admin ledger at [http://localhost:3000/admin](http://localhost:3000/admin) (Default password: `admin123`).
+* Access the private admin ledger at [http://localhost:3000/admin](http://localhost:3000/admin).
 
 ---
 
