@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💸 LendMeADollar
 
-## Getting Started
+> **"Can 1 million people give one dollar to a random internet experiment?"**  
+> *A minimalist, viral micro-crowdfunding experiment built on Next.js, PayPal, and Supabase.*
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ⚡ The Core MVP
+
+```text
+                 LEND ME A DOLLAR
+                        │
+                        ▼
+              "I need $1 from you."
+                        │
+                        ▼
+                   $1 PayPal
+                        │
+                        ▼
+                  Payment succeeds
+                        │
+                        ▼
+                  Counter increases
+                        │
+                        ▼
+              "You're supporter #37"
+                        │
+                        ▼
+                 Share on X/Reddit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Quick Start
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# 1. Install dependencies
+npm install
 
-## Learn More
+# 2. Run the development server
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000):
+* Click **GIVE $1** to test payment capture, supporter increment, and victory screen.
+* Access the private admin ledger at [http://localhost:3000/admin](http://localhost:3000/admin) (Default password: `admin123`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📁 File Structure
 
-## Deploy on Vercel
+```text
+lendmeadollar/
+├── app/
+│   ├── layout.tsx              # Root Layout (dark, pure black)
+│   ├── page.tsx                # Homepage Server Component
+│   ├── success/page.tsx        # Victory screen with supporter # & share button
+│   ├── admin/page.tsx          # Private ledger with real-time stats
+│   └── api/
+│       ├── stats/              # GET: Live counter stats and recent legends
+│       ├── paypal/
+│       │   ├── create-order/   # POST: Server-side PayPal order generation ($1)
+│       │   ├── capture-order/  # POST: Server-side order capture & DB recording
+│       │   └── webhook/        # POST: Webhook verification & idempotent sync
+│       └── admin/              # GET: Ledger metrics & transaction table
+├── components/
+│   ├── Counter.tsx             # Stark $ counter & minimal progress bar
+│   ├── PayPalSection.tsx       # $1 PayPal checkout & simulation mode
+│   ├── ActivityFeed.tsx        # Compact recent legends ticker
+│   ├── ShareButtons.tsx        # Monochrome Share on X & Copy Link
+│   └── HomeClient.tsx          # Unified homepage client wrapper
+├── lib/
+│   ├── db.ts                   # Supabase client + local fallback
+│   ├── paypal.ts               # PayPal REST API OAuth & capture service
+│   └── rate-limit.ts           # In-memory API rate limiter
+├── supabase/
+│   └── schema.sql              # Supabase PostgreSQL schema
+└── types/
+    └── index.ts                # TypeScript interfaces
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📜 Legal Disclaimer
+
+*Contributions are 100% voluntary social experiment gifts and NOT loans, investments, or securities.*
